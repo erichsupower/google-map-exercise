@@ -1,7 +1,31 @@
 # Goole Map API 練習
-Google Maps Platform [[傳送門↗](https://developers.google.com/maps)]
+Google Maps Platform [ [傳送門↗ ](https://developers.google.com/maps)]
 
-Hello Word
+## Hello Word
 
-[demo code](1_helloword.html)
+[demo code](1_helloword.html) 簡易基本用法
 
+## Styled Maps - Night Mode
+
+[demo code](2_nightmode.html)
+
+[Maps Platform Styling Wizard](https://mapstyle.withgoogle.com/) 線上自定義 map 樣式工具
+
+[SNAZZY MAPS](https://snazzymaps.com/) 免費 Google Map Style 網站
+
+## Simple Markers
+
+[demo code](3_simplemarkers.html) 使用官方預設 marker icon
+
+## Simple Marker Icons
+
+[demo code](4_simplemarkericons.html) 自定義 marker icon
+
+## Geomask
+
+[ [傳送門↗](http://maps.vasile.ch/geomask/) ]在 Google Maps上畫出簡易的多邊形狀遮罩。
+
+1. 點選右側的「New hole」，在Google Maps上即會產生一個遮罩區域。
+2. 拖拉角落的圓點調整區域的範圍。
+3. 再次點選「New hole」時則可以產生第2個、第3個區域…。
+4. 右手邊複製google maps的code。

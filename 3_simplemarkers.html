@@ -33,15 +33,24 @@
     var map;
 
     function initMap() {
+      var myLatLng = {
+        lat: 25.044298,
+        lng: 121.530372
+      };
+
       map = new google.maps.Map(document.getElementById('map'), {
         //地圖中心位置
-        center: {
-          lat: 25.044298,
-          lng: 121.530372
-        },
+        center: myLatLng,
         // 地圖縮放尺寸. 1:World; 5:Landmass/continent; 10:City; 15:Streets; 20:Buildings
         zoom: 15
       });
+
+      // 在地圖上增加一個 marker
+      var marker = new google.maps.Marker({
+          position: myLatLng,
+          map: map,
+          title: '維克數位創意有限公司'
+        });
     }
   </script>
 
