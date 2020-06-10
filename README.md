@@ -1,4 +1,4 @@
-# Goole Map API 練習
+# Maps JavaScript API
 Google Maps Platform [ [傳送門↗ ](https://developers.google.com/maps)]
 
 ## Hello Word
@@ -29,3 +29,7 @@ Google Maps Platform [ [傳送門↗ ](https://developers.google.com/maps)]
 2. 拖拉角落的圓點調整區域的範圍。
 3. 再次點選「New hole」時則可以產生第2個、第3個區域…。
 4. 右手邊複製google maps的code。
+
+# Geocoding API
+
+https://maps.googleapis.com/maps/api/geocode/json?address='帶入要查詢地址'&key=YOUR_API_KEY
