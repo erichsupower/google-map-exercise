@@ -36,14 +36,14 @@
 
         var geolocation = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + address + '&' + key;
         
-        var myLatLng = {};
+        var myLatLng;
 
         var requestURL = function () {
             xhr = new XMLHttpRequest();
             xhr.open('POST', geolocation);
             xhr.onload = function () {
                 var response = JSON.parse(this.responseText);
-                console.log(response.results[0].geometry.location);
+                // console.log(response.results[0].geometry.location);
                 myLatLng = response.results[0].geometry.location;
             }
             xhr.send();
@@ -51,8 +51,6 @@
 
         requestURL();
         
-
-
         // 初始化 google map
         var map;
 
