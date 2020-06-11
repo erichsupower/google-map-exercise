@@ -32,4 +32,7 @@ Google Maps Platform [ [傳送門↗ ](https://developers.google.com/maps)]
 
 # Geocoding API
 
+[demo code](5_geocodingapi.html)
+
 https://maps.googleapis.com/maps/api/geocode/json?address='帶入要查詢地址'&key=YOUR_API_KEY
+
