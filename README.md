@@ -36,3 +36,7 @@ Google Maps Platform [ [傳送門↗ ](https://developers.google.com/maps)]
 
 https://maps.googleapis.com/maps/api/geocode/json?address='帶入要查詢地址'&key=YOUR_API_KEY
 
+# Geolocation API
+
+[參考資源](https://www.oxxostudio.tw/articles/201810/google-maps-20-get-current-position.html)
+
