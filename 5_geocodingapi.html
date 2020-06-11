@@ -50,67 +50,77 @@
     2_key：使用者金鑰
     3_callback：執行 initMap function
     -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD2WK7pi_BfIFLy1OiSlyOMqKIu_XaXlT4&callback=initMap" defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD2WK7pi_BfIFLy1OiSlyOMqKIu_XaXlT4&callback=initMap"
+        defer></script>
 
     <script>
-        // 初始化 google map
+        // google map
         var map;
 
-        // google map api key
-        var key = 'key=AIzaSyD2WK7pi_BfIFLy1OiSlyOMqKIu_XaXlT4';
-        
-        //儲存使用者查詢的地址
-        var addressContent
+        // 地圖經緯度
+        var userLatLng;
 
-        //地圖初始地址
-        var address = '台北市八德路一段5號6樓';
+        // 組成 google map api 網址
+        getURL = (addressContent) => {
 
-        var geolocation = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + address + '&' + key;
+            // google map api key
+            const key = 'key=AIzaSyD2WK7pi_BfIFLy1OiSlyOMqKIu_XaXlT4';
 
-        var myLatLng;
+            //地圖初始地址
+            var address = addressContent ? addressContent : '台北市八德路一段5號6樓';
 
-        var requestURL = function () {
-            xhr = new XMLHttpRequest();
-            xhr.open('POST', geolocation);
+            // 組成 google map api 網址
+            var geolocation = `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&${key}`;
+
+            return geolocation;
+        }
+
+        // 使用 Geocoding API 轉換一般地址為經緯度
+        requestURL = (addressContent) => {
+            
+            //取得 google map api 網址
+            var geolocation = getURL(addressContent);
+
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', geolocation);
             xhr.onload = function () {
                 var response = JSON.parse(this.responseText);
-                myLatLng = response.results[0].geometry.location;
+                //指定取得的經緯度給 userLatLng
+                userLatLng = response.results[0].geometry.location;
                 initMap();
             }
             xhr.send();
-        };
+        }
 
-        requestURL();
+        requestURL(addressContent);
 
-        function initMap() {
-
+        initMap = () => {
+            // 初始化 Google Map
             map = new google.maps.Map(document.getElementById('map'), {
-                //地圖中心位置
-                center: myLatLng,
-                // 地圖縮放尺寸. 1:World; 5:Landmass/continent; 10:City; 15:Streets; 20:Buildings
-                zoom: 15
+                center: userLatLng, //地圖中心位置
+                zoom: 15 // 地圖縮放尺寸. 1:World; 5:Landmass/continent; 10:City; 15:Streets; 20:Buildings
             });
 
-            // 在地圖上增加一個 marker
+            // 初始化 Marker
             var marker = new google.maps.Marker({
-                position: myLatLng,
-                map: map,
-                title: '維克數位創意有限公司',
+                position: userLatLng,
+                map: map
             });
         }
 
+        //使用者查詢地址
+        var addressContent;
+
+        //取得查詢按鈕
         var searchSend = document.getElementById('searchSend');
 
-        searchSend.addEventListener('click', function () {
-            
+        searchSend.addEventListener('click', () => {
+
+            //取得查詢地址
             addressContent = document.getElementById('addressContent').value;
 
-            address = addressContent;
-
-            geolocation = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + address + '&' + key;
-
             if (addressContent) {
-                requestURL();
+                requestURL(addressContent);
             } else {
                 alert('輸入要查詢的地址');
             }
